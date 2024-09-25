@@ -4,7 +4,7 @@ import { createTooltip } from './components'
 
 type TimelineProps = {
   resources: Resource[]
-  monthYear: MonthYear
+  monthYear: Date
   key: Key
   flat: boolean
   showTooltip: boolean

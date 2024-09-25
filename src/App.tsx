@@ -1,13 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { resources } from './data'
-import {
-  MonthYear,
-  EventManager,
-  ClickData,
-  Page,
-  Resource,
-  getYearAndMonth,
-} from './'
+import { EventManager, ClickData, Page, Resource, getYearAndMonth } from './'
 import { TextField, TablePagination } from '@mui/material'
 
 function App() {
@@ -18,7 +11,7 @@ function App() {
     total: resources.length,
   })
   const [data, setData] = useState<Resource[]>([])
-  const [monthYear, setMonthYear] = useState<MonthYear>(getYearAndMonth())
+  const [monthYear, setMonthYear] = useState<Date>(getYearAndMonth())
   const [loading, setLoading] = useState(false)
 
   // This can be any async fetch function
@@ -39,7 +32,7 @@ function App() {
     console.log(data)
   }
 
-  const handleUpdateDate = (date: MonthYear) => {
+  const handleUpdateDate = (date: Date) => {
     console.log(date)
     setMonthYear(date)
   }

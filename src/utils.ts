@@ -1,13 +1,10 @@
 import { MonthYear } from '.'
 
-export const getDaysInMonth = (
-  { year, month }: MonthYear,
-  hasWeekends = true,
-): Date[] => {
+export const getDaysInMonth = (date: Date, hasWeekends = true): Date[] => {
   const daysInMonth: Date[] = []
-  const startDate = new Date(year, month - 1, 1) // month is zero-based in JavaScript
+  const startDate = new Date(date) // month is zero-based in JavaScript
 
-  while (startDate.getMonth() === month - 1) {
+  while (startDate.getMonth() === date.getMonth()) {
     if (hasWeekends || (!hasWeekends && !isWeekend(startDate))) {
       daysInMonth.push(new Date(startDate))
     }
@@ -17,11 +14,11 @@ export const getDaysInMonth = (
   return daysInMonth
 }
 
-export const getYearAndMonth = (date = new Date()): MonthYear => {
+export const getYearAndMonth = (date = new Date()): Date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1 // Months are zero-based, so we add 1
 
-  return { year, month }
+  return new Date(`${year}/${month}/1`)
 }
 
 export const formatDate = (date: Date): string => {
@@ -87,8 +84,8 @@ export const getDatesInRange = (startDate: Date, endDate: Date): Date[] => {
   return datesInRange
 }
 
-export const formatMonthYear = ({ month, year }: MonthYear) => {
-  const formattedDate = new Date(year, month - 1).toLocaleString('en-GB', {
+export const formatMonthYear = (date: Date) => {
+  const formattedDate = new Date(date).toLocaleString('en-GB', {
     month: 'long',
     year: 'numeric',
   })

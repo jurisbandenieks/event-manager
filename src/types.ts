@@ -48,5 +48,5 @@ export type Props = {
   actionsPossition?: 'top' | 'bottom' // default 'top'
   noDataText?: string // default 'No data'
   onClick?: (data: ClickData | undefined) => void
-  onUpdateDate: (date: MonthYear) => void
+  onUpdateDate: (date: Date) => void
 }

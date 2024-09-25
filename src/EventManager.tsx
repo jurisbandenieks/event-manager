@@ -29,7 +29,10 @@ export const EventManager: React.FC<Props> = ({
   }, [monthYear])
 
   const renderActions = (
-    <Actions monthYear={monthYear} onUpdate={(date) => setMonthYear(date)} />
+    <Actions
+      monthYear={monthYear}
+      onUpdate={(date) => setMonthYear(new Date(date))}
+    />
   )
 
   return (

@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './EventTable.module.scss'
 import { EventCell } from '../EventCell'
-import { ClickData, MonthYear, Resource } from '../../types'
+import { ClickData, Resource } from '../../types'
 import { formatDate, isWeekend } from '../../utils'
 import { useResourcesByEventTypes, useTimelineEffect } from '../../hooks'
 
 type Props = {
   title: string | null
-  monthYear: MonthYear
+  monthYear: Date
   daysInMonth: Date[]
   resources: Resource[]
   hasWeekends: boolean
